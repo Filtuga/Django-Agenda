@@ -1,13 +1,60 @@
 {% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
-    <title>Document</title>
+
+    <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
-    <h1>Qualquer Coisa</h1>
+	<nav class="navbar navbar-expand-lg navbar-dark p-3" id="headerNav">
+        <div class="container-fluid">
+          <a class="navbar-brand d-block d-lg-none" href="{% url 'contact:index' %}">
+            <img src="https://freepngimg.com/save/21934-transparent-open-book/900x652" height="80" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto ">
+
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#">Login</a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <a class="nav-link mx-2" href="{% url 'contact:index' %}">
+                  <img src="https://freepngimg.com/save/21934-transparent-open-book/900x652" height="80" />
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#">Register</a>
+              </li>
+                </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container w-25">
+      <form class="d-flex" role="search" action="{% url 'contact:search' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q.strip }}">
+        <button id="searchButton" class="btn btn-primary" type="submit">Search</button>
+      </form>
+    </div>
+
+
+
+        {% block content %}
+        {% endblock %}
+
+        <script>
+
+        </script>
 </body>
+
 </html>

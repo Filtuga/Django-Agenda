@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_=rp52&t0o=jojqq0)@xd4!)ibc6p3elueunkeee6qfz&c(0=w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     # My apps
     'contact',
 ]
@@ -133,3 +134,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+try:
+    from project.local_settings import *
+except ImportError:
+    ...

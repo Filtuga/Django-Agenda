@@ -1,0 +1,21 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+<div id="indexContainer" class="container shadow-lg mt-5 pb-3">
+    <h2 class="text-center p-3"><b>Add</b> a Contact</h2>
+<form action="{% url 'contact:create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-group ">
+        <span class="input-group-text">First and last name</span>
+        <input type="text" aria-label="First name" class="form-control" name="first_name" required>
+        <input type="text" aria-label="Last name" class="form-control" name="last_name">
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">E-mail:</span>
+        <input type="text" aria-label="Email" class="form-control" name="email" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

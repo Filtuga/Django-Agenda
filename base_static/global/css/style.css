@@ -1,3 +1,64 @@
 body {
-    background-color: red;
+    background-color: rgb(164, 188, 212);
+}
+
+#headerNav {
+    background-color: rgba(6, 6, 100, 0.800);
+}
+
+#navbarDropdownMenuLink {
+    color:aliceblue;
+    font-size: 40px;
+}
+
+.socials {
+    color: aliceblue;
+}
+
+#searchButton {
+    background-color: rgba(6, 6, 100, 0.800);
+}
+
+#indexContainer {
+    background-color: rgb(229, 234, 238);
+}
+
+.table {
+    max-width: 100%;
+}
+
+#tableHeader {
+    background-color: darkgray;
+}
+
+.table-link {
+    text-decoration:none;
+    color: rgb(108, 35, 8);
+}
+
+@media screen and (min-width:992px){
+    .nav-item {
+    line-height:80px;
+    }
+  }
+
+
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    font-size: small;
+}
+
+.pagination .step-links {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination .step-links a {
+    color: indigo;
+    transition: color white ease-in-out;
+    text-decoration: none;
+    display: block;
 }

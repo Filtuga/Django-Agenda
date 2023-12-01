@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+<div id="indexContainer" class="container shadow-lg mt-5">
+<div class="row h1 p-5"><strong>{{contact.first_name}}</strong></div>
+<div class="row pb-5">
+    <div class="col col-12 ps-5"><b>ID:</b> {{contact.id}}</div>
+    <div class="col col-12 ps-5"><b>E-mail:</b> {{contact.email}}</div>
+    <div class="col col-12 ps-5"><b>Phone:</b> {{contact.phone}}</div>
+    <div class="col col-12 ps-5"><b>Created Date:</b> {{contact.created_date}}</div>
+    <div class="col col-12 ps-5"><b>Description:</b> {{contact.description}}</div>
+    <div class="col col-12 ps-5"><b>Category:</b> {{contact.category.name}}</div>
+</div>
+</div>
+
+{% endblock %}
