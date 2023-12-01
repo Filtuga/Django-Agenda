@@ -8,14 +8,18 @@ from contact.forms import ContactForm
 
 
 def create_contact(request):
+    
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
+        form = ContactForm(request.POST)
 
+        context = {
+            'form': form
+        }
+        if form.is_valid():
+            form.save()
+        return render(request, "contact/create_contact.html", context)
 
     context = {
-        
+        'form': ContactForm()
     }
-
     return render(request, "contact/create_contact.html", context)
