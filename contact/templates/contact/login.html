@@ -1,0 +1,28 @@
+{% extends 'global/base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div id="indexContainer" class="container shadow-lg mt-5 pb-3">
+    <h2 class="text-center p-3">You are already logged in as {{request.user.username}}.</h2>
+    <h3 class="text-center p-3">Click <a href="{% url 'contact:logout' %}">here</a> to logout.</h3>
+</div>
+
+{% else %}
+
+<div id="indexContainer" class="container shadow-lg mt-5 pb-3">
+    <h2 class="text-center p-3">Login</h2>
+<form action="{% url 'contact:login' %}" method="POST" enctype="multipart/form-data" class="w-50 mx-auto">
+    {% csrf_token %}
+
+        {% bootstrap_form form %}
+        {% bootstrap_label content="" label_class="h3 text-center" %}
+        {% bootstrap_button button_type="submit" content="OK" %}
+        {% bootstrap_button button_type="reset" content="Cancel" %}
+       
+    </form>
+    </div>
+
+    {% endif %}
+
+{% endblock %}
