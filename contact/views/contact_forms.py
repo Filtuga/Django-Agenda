@@ -13,7 +13,7 @@ def create_contact(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
-
+        
         context = {
             'form': form,
             'form_action': form_action
@@ -38,6 +38,11 @@ def update(request, contact_id):
     if request.method == 'POST':
         print('POST method')
         form = ContactForm(request.POST, instance=contact)
+        picture = request.FILES.get('picture')
+        print(picture)
+        if picture:
+            contact.picture = picture
+            contact.save()
 
         context = {
             'form': form,

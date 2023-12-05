@@ -11,6 +11,9 @@
         <div class="col col-12 ps-5"><b>Created Date:</b> {{contact.created_date}}</div>
         <div class="col col-12 ps-5"><b>Description:</b> {{contact.description}}</div>
         <div class="col col-12 ps-5"><b>Category:</b> {{contact.category.name}}</div>
+        {% if contact.picture %}
+        <div class="col col-12 ps-5 detail-img"><img src="{{contact.picture.url}}" alt="{{contact.last_name}}, {{contact.first_name}} picture"></div>
+        {% endif %}
     </div>
     <div class="d-flex justify-content-between pb-3">
         <a href="{% url 'contact:update' contact.id %}"><button class="btn btn-outline-primary">Update</button></a>
