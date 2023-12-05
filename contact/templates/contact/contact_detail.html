@@ -3,15 +3,39 @@
 {% block content %}
 
 <div id="indexContainer" class="container shadow-lg mt-5">
-<div class="row h1 p-5"><strong>{{contact.first_name}}</strong></div>
-<div class="row pb-5">
-    <div class="col col-12 ps-5"><b>ID:</b> {{contact.id}}</div>
-    <div class="col col-12 ps-5"><b>E-mail:</b> {{contact.email}}</div>
-    <div class="col col-12 ps-5"><b>Phone:</b> {{contact.phone}}</div>
-    <div class="col col-12 ps-5"><b>Created Date:</b> {{contact.created_date}}</div>
-    <div class="col col-12 ps-5"><b>Description:</b> {{contact.description}}</div>
-    <div class="col col-12 ps-5"><b>Category:</b> {{contact.category.name}}</div>
+    <div class="row h1 p-5"><b>{{contact.last_name}}, {{contact.first_name}}</b> </div>
+    <div class="row pb-5">
+        <div class="col col-12 ps-5"><b>ID:</b> {{contact.id}}</div>
+        <div class="col col-12 ps-5"><b>E-mail:</b> {{contact.email}}</div>
+        <div class="col col-12 ps-5"><b>Phone:</b> {{contact.phone}}</div>
+        <div class="col col-12 ps-5"><b>Created Date:</b> {{contact.created_date}}</div>
+        <div class="col col-12 ps-5"><b>Description:</b> {{contact.description}}</div>
+        <div class="col col-12 ps-5"><b>Category:</b> {{contact.category.name}}</div>
+    </div>
+    <div class="d-flex justify-content-between pb-3">
+        <a href="{% url 'contact:update' contact.id %}"><button class="btn btn-outline-primary">Update</button></a>
+        <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+    </div>
 </div>
-</div>
+
+<div class="modal" tabindex="-1" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Wish to delete Contact {{contact.first_name}}?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{% url 'contact:delete' contact.id %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
