@@ -24,7 +24,11 @@
       
           <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto ">
-
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="{% url 'contact:create' %}">Add Contact</a>
+              </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link mx-2" href="{% url 'contact:login' %}">Login</a>
               </li>
@@ -36,6 +40,11 @@
               <li class="nav-item">
                 <a class="nav-link mx-2" href="{% url 'contact:register' %}">Register</a>
               </li>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="{% url 'contact:user_update' %}">Update User</a>
+              </li>
+              {% endif %}
                 </ul>
           </div>
         </div>
