@@ -12,13 +12,15 @@
         <div class="col col-12 ps-5"><b>Description:</b> {{contact.description}}</div>
         <div class="col col-12 ps-5"><b>Category:</b> {{contact.category.name}}</div>
         {% if contact.picture %}
-        <div class="col col-12 ps-5 detail-img"><img src="{{contact.picture.url}}" alt="{{contact.last_name}}, {{contact.first_name}} picture"></div>
+        <div class="col col-12 ps-5 mt-2 detail-img"><img src="{{contact.picture.url}}" alt="{{contact.last_name}}, {{contact.first_name}} picture" style="height: 150px;width: 100;"></div>
         {% endif %}
     </div>
+    {% if contact.owner == request.user %}
     <div class="d-flex justify-content-between pb-3">
         <a href="{% url 'contact:update' contact.id %}"><button class="btn btn-outline-primary">Update</button></a>
         <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
     </div>
+    {% endif %}
 </div>
 
 <div class="modal" tabindex="-1" id="deleteModal">
